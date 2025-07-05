@@ -1,1 +1,1 @@
-deploy link - aibot-musebot-byvoxnova-hackthonproj.netlify.app
+deploy link - https://aibot-musebot-byvoxnova-hackthonproj.netlify.app
