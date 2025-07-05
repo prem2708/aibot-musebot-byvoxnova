@@ -1,0 +1,1237 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary-color: #6a4ed3; /* Vibrant purple */
+    --secondary-color: #ff4757; /* Bright red */
+    --accent-color: #9f85ff; /* Soft lavender */
+    --background-color: #f8f5ff; /* Light background */
+    --text-color: #333; /* Dark text */
+    --white: #ffffff; /* White */
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 15px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.navbar:hover {
+    background-color: rgba(255, 255, 255, 1); /* Change on hover */
+}
+
+.logo {
+    font-size: 1.8rem; /* Increased font size */
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease; /* Smooth transition */
+}
+
+.logo:hover {
+    color: var(--secondary-color); /* Change color on hover */
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(135deg, rgba(45, 27, 105, 0.95), rgba(106, 78, 211, 0.85)),
+                url('museum-hero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    padding: 0 1rem;
+    animation: fadeIn 1s ease; /* Fade-in animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.hero-content {
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Museum Sections */
+.museum-section {
+    padding: 6rem 2rem;
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.museum-section h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.museum-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--accent-color);
+}
+
+.museum-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.museum-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.museum-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-image {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.museum-card:hover .card-image img {
+    transform: scale(1.05);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.card-content p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .museum-section {
+        padding: 4rem 1rem;
+    }
+
+    .museum-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .museum-section h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+
+/* Plan Section */
+.plan-section {
+    background-color: var(--white);
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.plan-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+.plan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.plan-card {
+    text-align: center;
+    padding: 2.5rem;
+    background: var(--white);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+.plan-card i {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.plan-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* Chatbot */
+.chatbot-widget {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+.chatbot-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+}
+
+.chatbot-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.chatbot-icon i {
+    color: var(--white);
+    font-size: 1.8rem;
+    transition: transform 0.3s ease;
+}
+
+.chatbot-icon:hover i {
+    animation: wave 0.5s ease;
+}
+
+/* Notification Dot */
+.notification-dot {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background-color: #ff4757;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    animation: pulse 2s infinite;
+}
+
+/* Chatbot Popup */
+.chatbot-popup {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    display: none;
+    transform: scale(0.95);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.chatbot-popup.active {
+    display: block;
+    transform: scale(1);
+}
+
+/* Minimized state */
+.chatbot-widget.minimized .chatbot-popup {
+    display: none;
+}
+
+.chatbot-widget.minimized .chatbot-icon {
+    background: var(--secondary-color);
+}
+
+/* Chatbot Header */
+.chatbot-header {
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header-title {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+.status-dot.online {
+    background-color: #2ecc71;
+    box-shadow: 0 0 0 2px rgba(46, 204, 113, 0.3);
+}
+
+/* Messages Container */
+.chatbot-messages {
+    height: 200px;
+    padding: 1.2rem;
+    overflow-y: auto;
+    background: #f8f9fa;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: none;
+    padding: 1rem;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+.typing-indicator.active {
+    display: flex;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+    opacity: 0.4;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Input Area */
+.chatbot-input {
+    padding: 0.5rem;
+    display: flex;
+    gap: 0.8rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: var(--white);
+}
+
+.input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.input-wrapper:focus-within {
+    border-color: var(--accent-color);
+    background: var(--white);
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border: none;
+    background: transparent;
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.input-icons {
+    display: flex;
+    padding-right: 0.5rem;
+    gap: 0.5rem;
+}
+
+.emoji-button {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.emoji-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--primary-color);
+}
+
+.send-button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-button:disabled {
+    background: #e0e0e0;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.send-button:not(:disabled):hover {
+    transform: scale(1.1) rotate(-10deg);
+}
+
+/* Messages */
+.message {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    animation: fadeInUp 0.3s ease;
+    max-width: 85%;
+}
+
+.message.user {
+    margin-left: auto;
+}
+
+.message.bot {
+    margin-right: auto;
+}
+
+.message-content {
+    padding: 1rem 1.2rem;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+}
+
+.user .message-content {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    border-radius: 15px 15px 0 15px;
+}
+
+.bot .message-content {
+    background: var(--white);
+    color: var(--text-color);
+    border-radius: 15px 15px 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Chatbot Footer */
+.chatbot-footer {
+    padding: 0.8rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    background: #f8f9fa;
+}
+
+/* Scrollbar Styling */
+.chatbot-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+}
+
+.chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes wave {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-15deg);
+    }
+    75% {
+        transform: rotate(15deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .museum-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid for medium screens */
+    }
+
+    .plan-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide navigation links on small screens */
+        flex-direction: column; /* Stack links vertically */
+        position: absolute; /* Position them absolutely */
+        top: 60px; /* Position below the navbar */
+        right: 0; /* Align to the right */
+        background-color: var(--white); /* Background color for dropdown */
+        width: 100%; /* Full width */
+        box-shadow: var(--shadow-md); /* Add shadow for depth */
+    }
+
+    .nav-links.active {
+        display: flex; /* Show links when active */
+    }
+
+    .hamburger {
+        display: flex; /* Show hamburger menu on small screens */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Smaller heading on mobile */
+    }
+
+    .museum-section {
+        padding: 4rem 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .museum-section h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .chatbot-popup {
+        width: 300px; /* Adjust chatbot popup width */
+        right: -10px; /* Adjust position */
+    }
+
+    .chatbot-messages {
+        height: 300px; /* Adjust height for chatbot messages */
+    }
+
+    .message-content {
+        max-width: 90%; /* Adjust message content width */
+    }
+
+    .feedback-faq-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+
+    .faq-item {
+        padding: 0.8rem; /* Adjust padding for smaller screens */
+    }
+
+    .faq-answer {
+        margin-top: 0.3rem; /* Adjust margin for smaller screens */
+    }
+}
+
+/* Loading Animation for Chatbot */
+.typing-indicator {
+    display: flex;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    background: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #2d1b69;
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+#chatbot-popup {
+    display: none; /* Initially hidden */
+}
+
+#chatbot-popup.active {
+    display: block; /* Show when active */
+}
+
+/* History and Heritage Section */
+.heritage-section {
+    padding: 4rem 2rem; /* Add padding for spacing */
+    background-color: var(--white); /* Background color */
+    color: var(--text-color); /* Text color */
+    text-align: center; /* Center align text */
+    border-top: 2px solid var(--primary-color); /* Top border for emphasis */
+    box-shadow: var(--shadow-lg); /* Add shadow for depth */
+}
+
+.heritage-section h2 {
+    font-size: 2.5rem; /* Font size for the heading */
+    color: var(--primary-color); /* Heading color */
+    margin-bottom: 2rem; /* Space below the heading */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px; /* Letter spacing for style */
+}
+
+.heritage-section p {
+    font-size: 1.1rem; /* Font size for paragraphs */
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 1.5rem; /* Space below each paragraph */
+    max-width: 800px; /* Maximum width for paragraphs */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+}
+
+/* Heritage Grid */
+.heritage-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Heritage Card */
+.heritage-card {
+    background: var(--white); /* Card background color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: var(--shadow-md); /* Shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Position for pseudo-elements */
+}
+
+.heritage-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: var(--shadow-lg); /* Increase shadow on hover */
+}
+
+.heritage-card img {
+    width: 100%; /* Make images responsive */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area */
+    transition: transform 0.3s ease; /* Smooth image transition */
+}
+
+.heritage-card img:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.heritage-card h3 {
+    padding: 1rem; /* Padding for title */
+    font-size: 1.5rem; /* Title font size */
+    color: var(--primary-color); /* Title color */
+    text-transform: capitalize; /* Capitalize title */
+}
+
+.heritage-card p {
+    padding: 0 1rem 1rem; /* Padding for description */
+    color: var(--text-color); /* Description color */
+    font-size: 1rem; /* Description font size */
+    line-height: 1.5; /* Line height for readability */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .heritage-section h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .heritage-card h3 {
+        font-size: 1.3rem; /* Smaller title on mobile */
+    }
+
+    .heritage-card p {
+        font-size: 0.9rem; /* Smaller description on mobile */
+    }
+}
+
+/* Religious Section */
+.religious-section {
+    padding: 4rem 2rem; /* Add padding for spacing */
+    background-color: var(--white); /* Background color */
+    color: var(--text-color); /* Text color */
+    text-align: center; /* Center align text */
+    border-top: 2px solid var(--primary-color); /* Top border for emphasis */
+    box-shadow: var(--shadow-lg); /* Add shadow for depth */
+}
+
+.religious-section h2 {
+    font-size: 2.5rem; /* Font size for the heading */
+    color: var(--primary-color); /* Heading color */
+    margin-bottom: 2rem; /* Space below the heading */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px; /* Letter spacing for style */
+}
+
+.religious-section p {
+    font-size: 1.1rem; /* Font size for paragraphs */
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 1.5rem; /* Space below each paragraph */
+    max-width: 800px; /* Maximum width for paragraphs */
+    margin-left: auto; /* Center align */
+    margin-right: auto; /* Center align */
+}
+
+/* Religious Grid */
+.religious-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 2rem; /* Space between cards */
+    max-width: 1200px; /* Max width for the grid */
+    margin: 0 auto; /* Center the grid */
+}
+
+/* Religious Card */
+.religious-card {
+    background: var(--white); /* Card background color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: var(--shadow-md); /* Shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    overflow: hidden; /* Hide overflow */
+    position: relative; /* Position for pseudo-elements */
+}
+
+.religious-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: var(--shadow-lg); /* Increase shadow on hover */
+}
+
+.religious-card img {
+    width: 100%; /* Make images responsive */
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area */
+    transition: transform 0.3s ease; /* Smooth image transition */
+}
+
+.religious-card img:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+.religious-card h3 {
+    padding: 1rem; /* Padding for title */
+    font-size: 1.5rem; /* Title font size */
+    color: var(--primary-color); /* Title color */
+    text-transform: capitalize; /* Capitalize title */
+}
+
+.religious-card p {
+    padding: 0 1rem 1rem; /* Padding for description */
+    color: var(--text-color); /* Description color */
+    font-size: 1rem; /* Description font size */
+    line-height: 1.5; /* Line height for readability */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .religious-section h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .religious-card h3 {
+        font-size: 1.3rem; /* Smaller title on mobile */
+    }
+
+    .religious-card p {
+        font-size: 0.9rem; /* Smaller description on mobile */
+    }
+}
+
+/* Feedback and FAQ Container */
+.feedback-faq-container {
+    display: flex; /* Use flexbox for side-by-side layout */
+    justify-content: space-between; /* Space between the two sections */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 2rem; /* Space between the two sections */
+}
+
+/* Feedback Form */
+.feedback-form {
+    flex: 1; /* Allow the form to grow */
+    min-width: 300px; /* Minimum width for the form */
+}
+
+/* FAQ Section */
+.faq-section {
+    flex: 1; /* Allow the FAQ section to grow */
+    min-width: 300px; /* Minimum width for the FAQ section */
+}
+
+/* FAQ Item */
+.faq-item {
+    margin-bottom: 1.5rem; /* Space between FAQ items */
+    padding: 1rem; /* Padding for each FAQ item */
+    border: 1px solid #ccc; /* Border for each FAQ item */
+    border-radius: 8px; /* Rounded corners for FAQ items */
+    transition: background 0.3s ease; /* Smooth background transition */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.faq-item:hover {
+    background-color: var(--accent-color); /* Change background on hover */
+    color: var(--white); /* Change text color on hover */
+}
+
+.faq-question {
+    font-weight: 600; /* Bold questions */
+    color: var(--primary-color); /* Question color */
+    margin-bottom: 0.5rem; /* Space below questions */
+}
+
+/* FAQ Answer */
+.faq-answer {
+    max-height: 0; /* Initially hidden */
+    overflow: hidden; /* Hide overflow */
+    margin-top: 0.5rem; /* Space above answers */
+    line-height: 1.5; /* Line height for readability */
+    transition: max-height 0.3s ease, opacity 0.3s ease; /* Smooth transition for height and opacity */
+    opacity: 0; /* Initially hidden */
+}
+
+/* Show answer when FAQ item is active */
+.faq-item.active .faq-answer {
+    max-height: 200px; /* Set a max height for the transition */
+    opacity: 1; /* Make it visible */
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .museum-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid for medium screens */
+    }
+
+    .plan-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust grid for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Hide navigation links on small screens */
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Smaller heading on mobile */
+    }
+
+    .museum-section {
+        padding: 4rem 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .museum-section h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .chatbot-popup {
+        width: 300px; /* Adjust chatbot popup width */
+        right: -10px; /* Adjust position */
+    }
+
+    .chatbot-messages {
+        height: 300px; /* Adjust height for chatbot messages */
+    }
+
+    .message-content {
+        max-width: 90%; /* Adjust message content width */
+    }
+
+    .feedback-faq-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+
+    .faq-item {
+        padding: 0.8rem; /* Adjust padding for smaller screens */
+    }
+
+    .faq-answer {
+        margin-top: 0.3rem; /* Adjust margin for smaller screens */
+    }
+}
+
+/* Loading Animation for Chatbot */
+.typing-indicator {
+    display: flex;
+    gap: 0.3rem;
+    padding: 0.5rem;
+    background: #f0f0f0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background: #2d1b69;
+    border-radius: 50%;
+    animation: bounce 1s infinite;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+#chatbot-popup {
+    display: none; /* Initially hidden */
+}
+
+#chatbot-popup.active {
+    display: block; /* Show when active */
+}
+
+/* Feedback Section */
+.feedback-section {
+    padding: 4rem 2rem; /* Add padding for spacing */
+    background-color: var(--white); /* Background color */
+    color: var(--text-color); /* Text color */
+    text-align: center; /* Center align text */
+    border-top: 2px solid var(--primary-color); /* Top border for emphasis */
+    box-shadow: var(--shadow-lg); /* Add shadow for depth */
+}
+
+.feedback-section h2 {
+    font-size: 2.5rem; /* Font size for the heading */
+    color: var(--primary-color); /* Heading color */
+    margin-bottom: 1rem; /* Space below the heading */
+}
+
+.feedback-section p {
+    font-size: 1.1rem; /* Font size for paragraphs */
+    line-height: 1.6; /* Line height for readability */
+    margin-bottom: 2rem; /* Space below each paragraph */
+}
+
+/* Feedback Form */
+.feedback-form {
+    max-width: 600px; /* Max width for the form */
+    margin: 0 auto; /* Center the form */
+    background: #f8f9fa; /* Light background for the form */
+    padding: 2rem; /* Padding for the form */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: var(--shadow-md); /* Shadow for depth */
+}
+
+.form-group {
+    margin-bottom: 1.5rem; /* Space between form groups */
+}
+
+label {
+    display: block; /* Block display for labels */
+    margin-bottom: 0.5rem; /* Space below labels */
+    font-weight: 600; /* Bold labels */
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%; /* Full width for inputs */
+    padding: 0.8rem; /* Padding for inputs */
+    border: 1px solid #ccc; /* Border for inputs */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1rem; /* Font size for inputs */
+}
+
+textarea {
+    resize: none; /* Disable resizing for textarea */
+}
+
+.submit-button {
+    background: var(--primary-color); /* Button background color */
+    color: var(--white); /* Button text color */
+    border: none; /* No border */
+    padding: 0.8rem 1.5rem; /* Padding for button */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+.submit-button:hover {
+    background: var(--secondary-color); /* Change background on hover */
+}
+
+/* Footer */
+.footer {
+    background: var(--primary-color); /* Footer background color */
+    color: var(--white); /* Footer text color */
+    text-align: center; /* Center align text */
+    padding: 1.5rem 0; /* Padding for footer */
+    position: relative; /* Position for footer */
+}
+
+.footer p {
+    margin: 0.5rem 0; /* Space between footer lines */
+}
+
+.social-link {
+    color: var(--white); /* Social link color */
+    text-decoration: underline; /* Underline for links */
+    margin: 0 0.5rem; /* Space between links */
+}
+
+.social-link:hover {
+    color: var(--accent-color); /* Change color on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .feedback-section h2 {
+        font-size: 2rem; /* Smaller heading on mobile */
+    }
+
+    .feedback-form {
+        padding: 1.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .footer {
+        padding: 1rem 0; /* Adjust footer padding for smaller screens */
+    }
+
+    .footer p {
+        font-size: 0.9rem; /* Smaller text size for footer on mobile */
+    }
+}
